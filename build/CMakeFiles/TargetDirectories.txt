@@ -1,3 +1,0 @@
-/home/chengzi/Desktop/nanodet/demo_openvino/openvino/build/CMakeFiles/rebuild_cache.dir
-/home/chengzi/Desktop/nanodet/demo_openvino/openvino/build/CMakeFiles/edit_cache.dir
-/home/chengzi/Desktop/nanodet/demo_openvino/openvino/build/CMakeFiles/demo_openvino.dir
