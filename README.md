@@ -72,3 +72,5 @@ make
 ./demo_openvino
 ~~~
 
+
+Congratulations! :clap:
