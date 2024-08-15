@@ -1,3 +1,15 @@
+/*
+这份代码是找到了openvino官方写的推理代码内容https://github.com/openvino-book/yolov8_openvino_cpp.git
+基础的模型的.xml和.param是未经优化的，后续会再做优化.
+
+
+文件当中可以修改的参数有以下几个:
+1. score_threshold 置信度阈值，程序只会挑选置信度大于score_threshold的预测框，score_threshold越大，则能够计算的预测框就越少，
+    剩下的预测框置信度就越高!
+2. nms_threshold nms阈值，程序会将不同边界框当中重合度较高的预测框删除，调高nms_threshold会让更多重合度较高的预测框被保留，
+    调低nms_threshold，会让重合度较高的预测框被丢弃。
+*/
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -101,6 +113,7 @@ int main(int argc, char* argv[])
         int index = indices[i];
         int class_id = class_ids[index];
         rectangle(img, boxes[index], colors[class_id % 6], 2, 8);
+        std::cout<< "prediction box["<< i << "]'s box is "<< boxes[index].x<< ", "<< boxes[index].y<<", "<< boxes[index].width<<", "<< boxes[index].height<< std::endl;
         std::string label = class_names[class_id] + ":" + std::to_string(class_scores[index]).substr(0, 4);
         Size textSize = cv::getTextSize(label, FONT_HERSHEY_SIMPLEX, 0.5, 1, 0);
         Rect textBox(boxes[index].tl().x, boxes[index].tl().y - 15, textSize.width, textSize.height+5);
